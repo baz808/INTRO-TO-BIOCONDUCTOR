@@ -1,0 +1,25 @@
+---
+title: "Installing Bioconductor"
+author: "Sarah Bazari"
+date: "2026-03-22"
+output: html_document
+---
+
+```{r}
+# install Biodconductor and check version
+if(!requireNamespace("BiocManager", quietly = TRUE))
+  install.packages("BiocManager")
+BiocManager::install(version = "3.22") 
+BiocManager::version()
+
+# install Bioconductor packages
+BiocManager::install("BSgenome.Hsapiens.UCSC.hg19")
+BiocManager::install(c("GenomicFeatures","AnnotationDbi"))
+
+# load installed packages
+library(BSgenome.Hsapiens.UCSC.hg19)
+library(GenomicFeatures)
+library(AnnotationDbi)
+```
+
+
