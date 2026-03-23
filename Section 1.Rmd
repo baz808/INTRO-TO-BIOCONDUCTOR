@@ -1,0 +1,50 @@
+---
+title: "Section 1"
+author: "Sarah Bazari"
+date: "2026-03-22"
+output: html_document
+---
+
+```{r}
+# Packages used in section 1
+BiocManager::install(c("genefu", 
+                       "COPDSexualDimorphism",
+                       "gwascat",
+                       "hgu133a.db",
+                       "genomicsclass/tissuesGeneExpression"))
+```
+
+```{r}
+# Exploring the genes used in the Mammaprint gene signature
+# This diagnostic signature assesses the risk that a breast cancer will progress
+# using the gene expression levels of 70 genes
+
+library(genefu)
+data(sig.gene70) # info on the 70 gene signature is in the 'sig.gene70' data.frame
+dim(sig.gene70)
+head(sig.gene70)[,1:6]
+```
+
+```{r}
+# How phenotypes can be coded in R objects
+
+library(COPDSexualDimorphism)
+data(lgrc.expr.meta)
+```
+
+```{r}
+# Genome-wide association studies (GWAS)
+# Individuals with a specific disease (cases) are identified along with otherwise
+# similar individuals who are disease free (controls)
+# SNP chips or DNA sequencing is used to obtain individuals' genotypes for a large
+# number of SNPs
+# The genotype distributions for all SNPs are compared between cases and controls
+# and those SNPs exhibiting association with disease are investigated for potential
+# insight into disruption of gene regulation or gene function
+
+# The gwascat package includes information on a catalog of GWAS results
+library(gwascat)
+data("ebicat_2020_04_30")
+ebicat_2020_04_30
+```
+
