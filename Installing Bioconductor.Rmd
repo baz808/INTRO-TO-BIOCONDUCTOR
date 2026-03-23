@@ -1,5 +1,5 @@
 ---
-title: "Installing Bioconductor"
+title: "Installing and Getting Help Bioconductor"
 author: "Sarah Bazari"
 date: "2026-03-22"
 output: html_document
@@ -14,12 +14,40 @@ BiocManager::version()
 
 # install Bioconductor packages
 BiocManager::install("BSgenome.Hsapiens.UCSC.hg19")
-BiocManager::install(c("GenomicFeatures","AnnotationDbi"))
+BiocManager::install(c("genefilter","geneplotter"))
 
 # load installed packages
 library(BSgenome.Hsapiens.UCSC.hg19)
-library(GenomicFeatures)
-library(AnnotationDbi)
+library(genefilter)
+library(geneplotter)
 ```
 
+
+```{r}
+# get help through the documentation
+help.start()
+?mean
+help(mean)
+help(package="genefilter")
+
+# inspect objects, classes and methods
+library(Biobase)    # load one of the core Bioconductor packages
+?ExpressionSet
+?"ExpressionSet-class"
+methods(class = ExpressionSet)
+
+# inspect the source code for functions and methods
+read.csv
+plotMA
+showMethods("plotMA")
+getMethod("plotMA","data.frame")
+
+# vignettes teach you how to use various functions in a package
+vignette(package="Biobase")
+vignette("ExpressionSetIntroduction")
+browseVignettes(package="Biobase")
+
+# report key details about your R session
+sessionInfo()
+```
 
